@@ -9,6 +9,7 @@ public final class NoMoreGigeresqueAliensConfig {
     public static final ModConfigSpec.BooleanValue DISABLE_GIGERESQUE_BIOME_EGG_SPAWNS;
     public static final ModConfigSpec.BooleanValue DISABLE_PANDORA_EFFECT;
     public static final ModConfigSpec.BooleanValue RESET_PANDORA_TRIGGER;
+    public static final ModConfigSpec.BooleanValue GENERATE_GIGERESQUE_DUNGEONS;
     public static final ModConfigSpec.BooleanValue DISABLE_EGGMORPHING;
     public static final ModConfigSpec.BooleanValue DISABLE_SPORE_INFECTION;
     public static final ModConfigSpec.BooleanValue CANCEL_BLOCKED_ENTITY_JOIN;
@@ -31,6 +32,13 @@ public final class NoMoreGigeresqueAliensConfig {
         RESET_PANDORA_TRIGGER = builder
                 .comment("Forces Gigeresque PandoraData.isTriggered() back to false every server tick.")
                 .define("resetPandoraTrigger", false);
+
+        GENERATE_GIGERESQUE_DUNGEONS = builder
+                .comment(
+                        "Allows new Gigeresque dungeons to generate in newly generated chunks.",
+                        "Existing generated dungeons are never removed by this option."
+                )
+                .define("generateGigeresqueDungeons", true);
 
         DISABLE_EGGMORPHING = builder
                 .comment("Stops xenomorph eggmorph AI from converting victims into new alien eggs.")

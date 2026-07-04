@@ -4,6 +4,7 @@
   "package": "dev.denismasterherobrine.nomoregigeresquealiens.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "ChunkGeneratorMixin",
     "EggmorphGoalMixin",
     "GigeresqueBiomeSpawnModifierMixin",
     "PandoraEffectMixin",

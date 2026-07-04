@@ -1,10 +1,13 @@
 package dev.denismasterherobrine.nomoregigeresquealiens;
 
 import java.util.Locale;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public final class GigeresqueControls {
     public static final String GIGERESQUE_NAMESPACE = "gigeresque";
@@ -19,6 +22,10 @@ public final class GigeresqueControls {
 
     public static boolean resetPandoraTrigger() {
         return NoMoreGigeresqueAliensConfig.RESET_PANDORA_TRIGGER.get();
+    }
+
+    public static boolean generateDungeons() {
+        return NoMoreGigeresqueAliensConfig.GENERATE_GIGERESQUE_DUNGEONS.get();
     }
 
     public static boolean disableEggmorphing() {
@@ -41,6 +48,14 @@ public final class GigeresqueControls {
         return NoMoreGigeresqueAliensConfig.BLOCKED_ENTITY_IDS.get().stream()
                 .map(value -> value.toLowerCase(Locale.ROOT))
                 .anyMatch(value -> value.equals(id.toString()));
+    }
+
+    public static boolean isGigeresqueStructure(Holder<Structure> structure) {
+        return structure.unwrapKey()
+                .map(ResourceKey::location)
+                .map(ResourceLocation::getNamespace)
+                .filter(GIGERESQUE_NAMESPACE::equals)
+                .isPresent();
     }
 
     private GigeresqueControls() {
